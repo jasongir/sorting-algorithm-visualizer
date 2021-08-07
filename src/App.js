@@ -12,7 +12,6 @@ import { useEffect } from "react";
    add keyboard controls: space/pause, left right/up down
 
    make user able to input own data: comma separated list of numbers, 0-100
-
       */
 
 import "./App.css";
