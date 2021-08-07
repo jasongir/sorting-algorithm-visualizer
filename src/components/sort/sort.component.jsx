@@ -110,13 +110,16 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 	useEffect(() => {
 		let interval;
 
-		if (isPlaying && currentIdx < arrayMoments.length) {
+		if (isPlaying && currentIdx < arrayMoments.length - 2) {
 			interval = setInterval(() => {
-				setCurrentIdx((oldVal) => oldVal + 1);
+				setCurrentIdx((oldVal) =>
+					oldVal === arrayMoments.length - 1 ? oldVal : oldVal + 1
+				);
 			}, baseDelay / speed);
 		}
 		return () => clearInterval(interval);
 	}, [isPlaying]);
+
 	useEffect(() => {
 		if (currentIdx === arrayMoments.length - 1) {
 			setIsPlaying(false);
@@ -231,6 +234,7 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 					</label>
 				</div>
 			</div>
+			{arrayMoments.length}
 			{sortDescription}
 		</>
 	);

@@ -20,7 +20,8 @@ import Home from "./pages/home/home.component";
 import Selection from "./pages/selection/selection.component";
 import Insertion from "./pages/insertion/insertion.component";
 import Merge from "./pages/merge/merge.component";
-// import Quick from "./pages/quick/quick.component";
+import Quick from "./pages/quick/quick.component";
+import Shell from "./pages/shell/shell.component";
 
 import { Route, Switch } from "react-router-dom";
 
@@ -46,8 +47,9 @@ function App() {
 				<Route path="/" component={Home} exact />
 				<Route path="/selection" component={Selection} exact />
 				<Route path="/insertion" component={Insertion} exact />
+				<Route path="/shell" component={Shell} exact />
 				<Route path="/merge" component={Merge} exact />
-				{/* <Route path="/quick" component={Quick} exact /> */}
+				<Route path="/quick" component={Quick} exact />
 			</Switch>
 		</div>
 	);

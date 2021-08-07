@@ -21,6 +21,11 @@ const Header = () => {
 					</Link>
 				</li>
 				<li>
+					<Link className="header-item" to="/shell">
+						Shell Sort
+					</Link>
+				</li>
+				<li>
 					<Link className="header-item" to="/merge">
 						Merge Sort
 					</Link>

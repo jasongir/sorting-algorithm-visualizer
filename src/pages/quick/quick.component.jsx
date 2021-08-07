@@ -1,5 +1,5 @@
 import React from "react";
-import { quickSort } from "../../utilities/utils";
+import { quickSort } from "../../utilities/quickSort";
 import Sort from "../../components/sort/sort.component";
 
 const QuickSort = () => (
