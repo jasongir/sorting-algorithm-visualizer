@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createRandomArray } from "../../utilities/utils";
 
 import ShowBars from "../../components/show-bars/show-bars.component";
+import LabeledSlider from "../labeled-slider/labeled-slider.component";
 
 const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 	// Constant values
@@ -130,62 +131,43 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 		<>
 			<h1>{sortName}</h1>
 			<div className="sort-top-settings">
-				<div>
-					<label htmlFor="array-size">
-						Array Size: {numItems}
-						<input
-							type="range"
-							name="minimum"
-							id="array-size"
-							min="5"
-							max="100"
-							value={numItems}
-							onChange={handleSliderChange(NUM_ITEMS)}
-						/>
-					</label>
-				</div>
-				<div>
-					<label htmlFor="min-value">
-						Min: {min}
-						<input
-							type="range"
-							name="minimum"
-							id="min-value"
-							min="0"
-							max="99"
-							value={min}
-							onChange={handleSliderChange(MINIMUM)}
-						/>
-					</label>
-				</div>
-				<div>
-					<label htmlFor="max-value">
-						Max: {max}
-						<input
-							type="range"
-							name="maximum"
-							id="max-value"
-							min="1"
-							max="100"
-							value={max}
-							onChange={handleSliderChange(MAXIMUM)}
-						/>
-					</label>
-				</div>
-				<div>
-					<label htmlFor="delay-value">
-						Base Delay: {baseDelay}ms
-						<input
-							type="range"
-							name="delay"
-							id="delay-value"
-							min="30"
-							max="1000"
-							value={baseDelay}
-							onChange={handleSliderChange(DELAY_AMOUNT)}
-						/>
-					</label>
-				</div>
+				<LabeledSlider
+					id="array-size"
+					label={`Array Size: ${numItems}`}
+					name="size"
+					min="5"
+					max="100"
+					value={numItems}
+					onChange={handleSliderChange(NUM_ITEMS)}
+				/>
+				<LabeledSlider
+					id="min-value"
+					label={`Min: ${min}`}
+					name="minimum"
+					min="0"
+					max="99"
+					value={min}
+					onChange={handleSliderChange(MINIMUM)}
+				/>
+
+				<LabeledSlider
+					id="max-value"
+					label={`Max: ${max}`}
+					name="maximum"
+					min="1"
+					max="100"
+					value={max}
+					onChange={handleSliderChange(MAXIMUM)}
+				/>
+				<LabeledSlider
+					id="delay-value"
+					label={`Base Delay: ${baseDelay}ms`}
+					name="delay"
+					min="30"
+					max="1000"
+					value={baseDelay}
+					onChange={handleSliderChange(DELAY_AMOUNT)}
+				/>
 				<button onClick={handleReset}>Reset</button>
 				<button onClick={createNewMoments}>Randomize</button>
 			</div>
@@ -234,7 +216,8 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 					</label>
 				</div>
 			</div>
-			{arrayMoments.length}
+			<p>There are {arrayMoments.length} "frames" in this sorting.</p>
+
 			{sortDescription}
 		</>
 	);

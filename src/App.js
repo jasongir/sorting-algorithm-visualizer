@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 
 //!?* TODO:
-/* 
-   Add quicksort
-
+/*
    break sort component into 
       top section with sliders/reset/randomize
       middle section bars
@@ -12,7 +10,9 @@ import { useEffect } from "react";
    add keyboard controls: space/pause, left right/up down
 
    make user able to input own data: comma separated list of numbers, 0-100
-      */
+     
+   make this into a PWA, add MUI
+   */
 
 import "./App.css";
 import Header from "./components/header/header.component";
@@ -26,10 +26,7 @@ import Shell from "./pages/shell/shell.component";
 import { Route, Switch } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import {
-	setWidth,
-	selectWidth,
-} from "./features/pageAttributes/pageAttributeSlice";
+import { setWidth } from "./features/pageAttributes/pageAttributeSlice";
 
 function App() {
 	const dispatch = useDispatch();

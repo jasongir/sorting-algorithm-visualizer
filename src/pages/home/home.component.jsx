@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const Home = () => {
-   return (
-      <div>
-         Home page
-      </div>
-   )
-}
+	return (
+		<div>
+			<h1>The Sorting Algorithm Visualizer!</h1>
+			then have a cool home screen with screen shots from each of the sorts or
+			something
+		</div>
+	);
+};
 
-export default Home
+export default Home;
