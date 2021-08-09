@@ -168,8 +168,14 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 					value={baseDelay}
 					onChange={handleSliderChange(DELAY_AMOUNT)}
 				/>
-				<button onClick={handleReset}>Reset</button>
-				<button onClick={createNewMoments}>Randomize</button>
+
+				<div className="triple-top-buttons">
+					<button onClick={handlePlayPause}>
+						{isPlaying ? "Pause" : "SORT!"}
+					</button>
+					<button onClick={handleReset}>Reset</button>
+					<button onClick={createNewMoments}>Randomize</button>
+				</div>
 			</div>
 
 			<ShowBars
@@ -177,23 +183,43 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 				highlightedBars={arrayMoments[currentIdx].highlighted}
 			/>
 
-			<div className="sort-control-play">
-				<input
-					type="range"
-					name="index-slider"
-					id="idx-slider"
-					onChange={handleSliderChange(BIG_SLIDER)}
-					value={currentIdx}
-					min={0}
-					max={arrayMoments.length - 1}
-					step={1}
-				/>
+			{/*
+         <SortControls 
+            handleSliderChange={handleSliderChange(BIG_SLIDER)}
+            sliderValue={currentIdx}
+            max={arrayMoments.length - 1}
 
-				<button onClick={handleBackForward(BACKWARD)}>Back</button>
-				<button onClick={handlePlayPause}>
-					{isPlaying ? "Pause" : "Play"}
-				</button>
-				<button onClick={handleBackForward(FORWARD)}>Forward</button>
+            handleBackwards={handleBackForward(BACKWARD)}
+            handleForwards={handleBackForward(FORWARD)}
+            handlePlayPause={handlePlayPause}
+            isPlaying={isPlaying}
+            speedValue={speed}
+            handleSpeedChange={handleSpeedChange}
+
+         />
+         */}
+
+			<div className="sort-control-play">
+				<div className="index-slider-container">
+					<input
+						type="range"
+						name="index-slider"
+						id="idx-slider"
+						onChange={handleSliderChange(BIG_SLIDER)}
+						value={currentIdx}
+						min={0}
+						max={arrayMoments.length - 1}
+						step={1}
+					/>
+				</div>
+
+				<div className="play-controls">
+					<button onClick={handleBackForward(BACKWARD)}>Back</button>
+					<button onClick={handlePlayPause}>
+						{isPlaying ? "Pause" : "Play"}
+					</button>
+					<button onClick={handleBackForward(FORWARD)}>Forward</button>
+				</div>
 
 				<div>
 					<label htmlFor="speed-selection">
@@ -216,7 +242,7 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 					</label>
 				</div>
 			</div>
-			<p>There are {arrayMoments.length} "frames" in this sorting.</p>
+			<p>There are {arrayMoments.length} "frames" in this sort.</p>
 
 			{sortDescription}
 		</>
