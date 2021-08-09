@@ -2,6 +2,11 @@ import { useEffect } from "react";
 
 //!?* TODO:
 /*
+   add bubble sort
+
+   allow for get params to set the settings:
+   ?size=90&min=10&max=100&delay=30
+
    break sort component into 
       top section with sliders/reset/randomize
       middle section bars
@@ -10,6 +15,7 @@ import { useEffect } from "react";
    add keyboard controls: space/pause, left right/up down
 
    make user able to input own data: comma separated list of numbers, 0-100
+   user can save the randomized data at some point or save whatever slice to be inputed later
      
    make this into a PWA, add MUI
    */
