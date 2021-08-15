@@ -1,0 +1,12 @@
+.control-buttons-select {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	position: relative;
+}
+
+.speed-form-control {
+	position: absolute;
+	top: 0;
+	left: 0;
+}

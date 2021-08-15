@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { createRandomArray } from "../../utilities/utils";
 
+import Typography from "@material-ui/core/Typography";
+
 import SortControls from "../sort-controls/sort-controls.component";
-import SortTopSettings from "../sort-top-settings/sort-settings.component.jsx";
+import SortTopSettings from "../sort-top-settings/sort-top-settings.component.jsx";
 
 import ShowBars from "../../components/show-bars/show-bars.component";
 
@@ -38,7 +40,7 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 	//! Handlers
 
 	// handles when array size, minimum val, or max val changes
-	const handleSliderChange = (sliderType) => (e) => {
+	const handleSliderChange = (sliderType) => (e, newValue) => {
 		const value = Number(e.target.value);
 
 		switch (sliderType) {
@@ -63,7 +65,7 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 				return;
 			case BIG_SLIDER:
 				setIsPlaying(false);
-				setCurrentIdx(value);
+				setCurrentIdx(newValue);
 				return;
 			case DELAY_AMOUNT:
 				setBaseDelay(value);
@@ -133,41 +135,45 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 
 	return (
 		<div className="sorting-container-div">
-			<h1>{sortName}</h1>
-			<SortTopSettings
-				numItems={numItems}
-				handleNumItemsChange={handleSliderChange(NUM_ITEMS)}
-				minValue={min}
-				handleMinValueChange={handleSliderChange(MINIMUM)}
-				maxValue={max}
-				handleMaxValueChange={handleSliderChange(MAXIMUM)}
-				baseDelay={baseDelay}
-				handleBaseDelayChange={handleSliderChange(DELAY_AMOUNT)}
-				handlePlayPause={handlePlayPause}
-				isPlaying={isPlaying}
-				handleReset={handleReset}
-				createNewMoments={createNewMoments}
-			/>
+			<div className="sorting-component-inner-container">
+				<Typography variant="h4" component="h1">
+					{sortName}
+				</Typography>
+				<SortTopSettings
+					numItems={numItems}
+					handleNumItemsChange={handleSliderChange(NUM_ITEMS)}
+					minValue={min}
+					handleMinValueChange={handleSliderChange(MINIMUM)}
+					maxValue={max}
+					handleMaxValueChange={handleSliderChange(MAXIMUM)}
+					baseDelay={baseDelay}
+					handleBaseDelayChange={handleSliderChange(DELAY_AMOUNT)}
+					handlePlayPause={handlePlayPause}
+					isPlaying={isPlaying}
+					handleReset={handleReset}
+					createNewMoments={createNewMoments}
+				/>
 
-			<ShowBars
-				currentArray={arrayMoments[currentIdx].wholeArray}
-				highlightedBars={arrayMoments[currentIdx].highlighted}
-			/>
+				<ShowBars
+					currentArray={arrayMoments[currentIdx].wholeArray}
+					highlightedBars={arrayMoments[currentIdx].highlighted}
+				/>
 
-			<SortControls
-				handleSliderChange={handleSliderChange(BIG_SLIDER)}
-				sliderValue={currentIdx}
-				max={arrayMoments.length - 1}
-				handleBackwards={handleBackForward(BACKWARD)}
-				handleForwards={handleBackForward(FORWARD)}
-				handlePlayPause={handlePlayPause}
-				isPlaying={isPlaying}
-				speedValue={speed}
-				handleSpeedChange={handleSpeedChange}
-			/>
+				<SortControls
+					handleSliderChange={handleSliderChange(BIG_SLIDER)}
+					sliderValue={currentIdx}
+					max={arrayMoments.length - 1}
+					handleBackwards={handleBackForward(BACKWARD)}
+					handleForwards={handleBackForward(FORWARD)}
+					handlePlayPause={handlePlayPause}
+					isPlaying={isPlaying}
+					speedValue={speed}
+					handleSpeedChange={handleSpeedChange}
+				/>
 
-			<p>There are {arrayMoments.length} "frames" in this sort.</p>
-			{sortDescription}
+				<p>There are {arrayMoments.length} "frames" in this sort.</p>
+				{sortDescription}
+			</div>
 		</div>
 	);
 };

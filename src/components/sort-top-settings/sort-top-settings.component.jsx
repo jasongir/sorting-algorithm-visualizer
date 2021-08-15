@@ -1,7 +1,21 @@
 import React from "react";
 import LabeledSlider from "../labeled-slider/labeled-slider.component";
 
-const SortSettings = ({
+/*
+discrete slider: 
+      <Slider
+        defaultValue={30}
+        getAriaValueText={valuetext}
+        aria-labelledby="discrete-slider"
+        valueLabelDisplay="auto"
+        step={10}
+        marks
+        min={10}
+        max={110}
+      />
+*/
+
+const SortTopSettings = ({
 	numItems,
 	handleNumItemsChange,
 	minValue,
@@ -68,4 +82,4 @@ const SortSettings = ({
 	);
 };
 
-export default SortSettings;
+export default SortTopSettings;

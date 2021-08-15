@@ -1,3 +1,7 @@
 .sorting-container-div {
 	padding-top: var(--top-height);
 }
+
+.sorting-component-inner-container {
+	padding: 10px;
+}
