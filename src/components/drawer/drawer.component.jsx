@@ -21,37 +21,37 @@ const SideDrawer = ({ showDrawer, setShowDrawer }) => {
 	const drawer = (
 		<div className="side-drawer" style={{ width: drawerWidth }}>
 			<List>
-				<ListItem button>
-					<Typography variant="h5">
-						<Link to="/">
+				<Link to="/">
+					<ListItem button>
+						<Typography variant="h5">
 							<IconButton>
 								<HomeIcon />
 							</IconButton>
 							HOME
-						</Link>
-					</Typography>
-				</ListItem>
+						</Typography>
+					</ListItem>
+				</Link>
 				<Divider />
-				<ListItem button>
-					<Typography variant="h6">
-						<Link to="/selection">Selection Sort</Link>
-					</Typography>
-				</ListItem>
-				<ListItem button>
-					<Typography variant="h6">
-						<Link to="/insertion">Insertion Sort</Link>
-					</Typography>
-				</ListItem>
-				<ListItem button>
-					<Typography variant="h6">
-						<Link to="/shell">Shell Sort</Link>
-					</Typography>
-				</ListItem>
-				<ListItem button>
-					<Typography variant="h6">
-						<Link to="/merge">Merge Sort</Link>
-					</Typography>
-				</ListItem>
+				<Link to="/selection">
+					<ListItem button>
+						<Typography variant="h6">Selection Sort</Typography>
+					</ListItem>
+				</Link>
+				<Link to="/insertion">
+					<ListItem button>
+						<Typography variant="h6">Insertion Sort</Typography>
+					</ListItem>
+				</Link>
+				<Link to="/shell">
+					<ListItem button>
+						<Typography variant="h6">Shell Sort</Typography>
+					</ListItem>
+				</Link>
+				<Link to="/merge">
+					<ListItem button>
+						<Typography variant="h6">Merge Sort</Typography>
+					</ListItem>
+				</Link>
 				<ListItem button>
 					<Typography variant="h6">
 						<Link to="/quick">Quick Sort</Link>

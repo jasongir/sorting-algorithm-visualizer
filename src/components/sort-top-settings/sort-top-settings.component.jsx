@@ -81,6 +81,7 @@ const SortTopSettings = ({
 						<Button
 							variant="contained"
 							color="primary"
+							style={{ color: "white" }}
 							onClick={handlePlayPause}
 						>
 							{isPlaying ? "PAUSE" : "SORT"}
