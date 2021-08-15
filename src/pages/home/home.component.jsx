@@ -7,7 +7,7 @@ import "./home.styles.css";
 const Home = () => {
 	return (
 		<div className="home-page">
-			<div className="home-inner-contaie">
+			<div className="home-inner-container">
 				<Typography variant="h4" component="h1">
 					The Sorting Algorithm Visualizer!
 				</Typography>

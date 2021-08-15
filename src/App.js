@@ -47,22 +47,6 @@ function App() {
 	// showing menu button exclusively depends on size of screen
 	const [showMenu, setShowMenu] = useState(true);
 
-	useEffect(() => {
-		const largeScreen = 700;
-		const screenIsLarge = () => window.innerWidth > largeScreen;
-		const screenIsSmall = () => window.innerWidth <= largeScreen;
-		const changeShowDrawer = () => setShowDrawer(screenIsLarge);
-		const changeShowMenu = () => setShowMenu(screenIsSmall);
-
-		window.addEventListener("resize", changeShowDrawer);
-		window.addEventListener("resize", changeShowMenu);
-
-		return () => {
-			window.removeEventListener("resize", changeShowDrawer);
-			window.removeEventListener("resize", changeShowMenu);
-		};
-	});
-
 	return (
 		<div className="App">
 			<div className="side-drawer-container">
@@ -112,3 +96,19 @@ function App() {
 }
 
 export default App;
+
+// useEffect(() => {
+// 	const largeScreen = 700;
+// 	const screenIsLarge = () => window.innerWidth > largeScreen;
+// 	const screenIsSmall = () => window.innerWidth <= largeScreen;
+// 	const changeShowDrawer = () => setShowDrawer(screenIsLarge);
+// 	const changeShowMenu = () => setShowMenu(screenIsSmall);
+
+// 	window.addEventListener("resize", changeShowDrawer);
+// 	window.addEventListener("resize", changeShowMenu);
+
+// 	return () => {
+// 		window.removeEventListener("resize", changeShowDrawer);
+// 		window.removeEventListener("resize", changeShowMenu);
+// 	};
+// });
