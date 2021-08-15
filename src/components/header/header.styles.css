@@ -1,6 +1,6 @@
 header {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
 
 .logo {
@@ -11,7 +11,7 @@ header {
 	width: 100%;
 
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: flex-end;
 
 	list-style-type: none;

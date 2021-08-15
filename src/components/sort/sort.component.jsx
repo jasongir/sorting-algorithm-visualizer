@@ -4,6 +4,8 @@ import { createRandomArray } from "../../utilities/utils";
 import ShowBars from "../../components/show-bars/show-bars.component";
 import LabeledSlider from "../labeled-slider/labeled-slider.component";
 
+import "./sort.styles.css";
+
 const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 	// Constant values
 	const [MINIMUM, MAXIMUM, NUM_ITEMS, BIG_SLIDER, DELAY_AMOUNT] = [
@@ -128,7 +130,7 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 	}, [currentIdx]);
 
 	return (
-		<>
+		<div className="sorting-container-div">
 			<h1>{sortName}</h1>
 			<div className="sort-top-settings">
 				<LabeledSlider
@@ -245,7 +247,7 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 			<p>There are {arrayMoments.length} "frames" in this sort.</p>
 
 			{sortDescription}
-		</>
+		</div>
 	);
 };
 

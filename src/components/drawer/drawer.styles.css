@@ -1,0 +1,5 @@
+.side-drawer {
+	height: 100vh;
+	z-index: 99;
+	background-color: lightgray;
+}

@@ -1,42 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./header.styles.css";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 
-const Header = () => {
+import MenuIcon from "@material-ui/icons/Menu";
+import "@fontsource/roboto";
+import Typography from "@material-ui/core/Typography";
+
+import "./header.styles.css";
+import { Hidden } from "@material-ui/core";
+
+import { drawerWidth } from "../drawer/drawer.component";
+
+const Header = ({ setShowDrawer, showDrawer, showMenu }) => {
+	const handleDrawerToggle = () => setShowDrawer(!showDrawer);
+
 	return (
-		<header>
-			<h1 className="logo">
-				<Link to="/">HOME</Link>
-			</h1>
-			<ul className="header-ul">
-				<li>
-					<Link className="header-item" to="/selection">
-						Selection Sort
+		<>
+			<AppBar>
+				<Toolbar>
+					<Hidden mdUp>
+						<IconButton onClick={handleDrawerToggle}>
+							<MenuIcon />
+						</IconButton>
+					</Hidden>
+					<Link to="/">
+						<Typography
+							variant="h6"
+							component="h2"
+							style={
+								!showMenu
+									? {
+											marginLeft: drawerWidth,
+											width: `calc(100vw - ${drawerWidth}px)`,
+									  }
+									: {}
+							}
+						>
+							Sorting Algorithm Visualizer
+						</Typography>
 					</Link>
-				</li>
-				<li>
-					<Link className="header-item" to="/insertion">
-						Insertion Sort
-					</Link>
-				</li>
-				<li>
-					<Link className="header-item" to="/shell">
-						Shell Sort
-					</Link>
-				</li>
-				<li>
-					<Link className="header-item" to="/merge">
-						Merge Sort
-					</Link>
-				</li>
-				<li>
-					<Link className="header-item" to="/quick">
-						Quick Sort
-					</Link>
-				</li>
-			</ul>
-		</header>
+				</Toolbar>
+			</AppBar>
+		</>
 	);
 };
 
