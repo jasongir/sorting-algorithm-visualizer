@@ -1,3 +1,6 @@
 .home-page {
 	margin-top: var(--top-height);
 }
+.home-inner-container {
+	padding: 10px;
+}
