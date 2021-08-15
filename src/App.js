@@ -38,7 +38,7 @@ import Shell from "./pages/shell/shell.component";
 
 import { drawerWidth } from "./components/drawer/drawer.component";
 
-import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
 
 import { Route, Switch } from "react-router-dom";
 
@@ -77,26 +77,36 @@ function App() {
 				setShowDrawer={setShowDrawer}
 				showDrawer={showDrawer}
 			/>
-			<div
-				className="application"
-				style={
-					!showMenu
-						? {
-								width: `calc(100vw - ${drawerWidth}px)`,
-								marginLeft: drawerWidth,
-						  }
-						: {}
-				}
-			>
-				<Switch>
-					<Route path="/" component={Home} exact />
-					<Route path="/selection" component={Selection} exact />
-					<Route path="/insertion" component={Insertion} exact />
-					<Route path="/shell" component={Shell} exact />
-					<Route path="/merge" component={Merge} exact />
-					<Route path="/quick" component={Quick} exact />
-				</Switch>
-			</div>
+			<Hidden smDown>
+				<div
+					className="application"
+					style={{
+						width: `calc(100vw - ${drawerWidth}px)`,
+						marginLeft: drawerWidth,
+					}}
+				>
+					<Switch>
+						<Route path="/" component={Home} exact />
+						<Route path="/selection" component={Selection} exact />
+						<Route path="/insertion" component={Insertion} exact />
+						<Route path="/shell" component={Shell} exact />
+						<Route path="/merge" component={Merge} exact />
+						<Route path="/quick" component={Quick} exact />
+					</Switch>
+				</div>
+			</Hidden>
+			<Hidden mdUp>
+				<div>
+					<Switch>
+						<Route path="/" component={Home} exact />
+						<Route path="/selection" component={Selection} exact />
+						<Route path="/insertion" component={Insertion} exact />
+						<Route path="/shell" component={Shell} exact />
+						<Route path="/merge" component={Merge} exact />
+						<Route path="/quick" component={Quick} exact />
+					</Switch>
+				</div>
+			</Hidden>
 		</div>
 	);
 }

@@ -40,35 +40,35 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 	//! Handlers
 
 	// handles when array size, minimum val, or max val changes
-	const handleSliderChange = (sliderType) => (e, newValue) => {
-		const value = Number(e.target.value);
-
+	const handleSliderChange = (sliderType) => (_event, newValue) => {
+		// const value = Number(e.target.value);
+		const newVal = Number(newValue);
 		switch (sliderType) {
 			case MINIMUM:
-				if (value < max) {
-					setMin(value);
+				if (newVal < max) {
+					setMin(newVal);
 					setCurrentIdx(0);
 					setIsPlaying(false);
 					return;
 				}
 			case MAXIMUM:
-				if (value > min) {
-					setMax(value);
+				if (newVal > min) {
+					setMax(newVal);
 					setCurrentIdx(0);
 					setIsPlaying(false);
 					return;
 				}
 			case NUM_ITEMS:
-				setNumItems(value);
+				setNumItems(newVal);
 				setCurrentIdx(0);
 				setIsPlaying(false);
 				return;
 			case BIG_SLIDER:
 				setIsPlaying(false);
-				setCurrentIdx(newValue);
+				setCurrentIdx(newVal);
 				return;
 			case DELAY_AMOUNT:
-				setBaseDelay(value);
+				setBaseDelay(newVal);
 				return;
 			default:
 				console.log("not a slider type ._.");
@@ -170,9 +170,12 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 					speedValue={speed}
 					handleSpeedChange={handleSpeedChange}
 				/>
-
-				<p>There are {arrayMoments.length} "frames" in this sort.</p>
-				{sortDescription}
+				<div className="under-sort-content">
+					<Typography variant="body1" component="p">
+						There are {arrayMoments.length} "frames" in this sort.
+					</Typography>
+					{sortDescription}
+				</div>
 			</div>
 		</div>
 	);

@@ -1,0 +1,15 @@
+.top-slider {
+	width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+	.top-slider {
+		width: 67%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.top-slider {
+		width: 100%;
+	}
+}

@@ -1,9 +1,43 @@
 import React from "react";
 
-const LabeledSlider = ({ id, label, name, min, max, value, onChange }) => {
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+
+import "./labeled-slider.styles.css";
+
+const LabeledSlider = ({
+	id,
+	label,
+	name,
+	min,
+	max,
+	value,
+	onChange,
+	defaultValue,
+}) => {
 	return (
-		<div>
-			<label htmlFor={id}>
+		<div className="top-slider">
+			<Typography variant="body1" component="p">
+				{label}
+			</Typography>
+			<Slider
+				aria-labelledby={label}
+				valueLabelDisplay="auto"
+				step={1}
+				min={min}
+				max={max}
+				onChange={onChange}
+				value={value}
+				defaultValue={defaultValue}
+			/>
+		</div>
+	);
+};
+
+export default LabeledSlider;
+
+/*
+         <label htmlFor={id}>
 				{label}
 				<input
 					type="range"
@@ -15,8 +49,4 @@ const LabeledSlider = ({ id, label, name, min, max, value, onChange }) => {
 					onChange={onChange}
 				/>
 			</label>
-		</div>
-	);
-};
-
-export default LabeledSlider;
+*/

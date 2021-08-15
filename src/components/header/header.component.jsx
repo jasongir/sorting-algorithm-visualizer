@@ -37,14 +37,10 @@ const Header = ({ setShowDrawer, showDrawer, showMenu }) => {
 							<Typography
 								variant="h6"
 								component="h2"
-								style={
-									!showMenu
-										? {
-												marginLeft: drawerWidth,
-												width: `calc(100vw - ${drawerWidth}px)`,
-										  }
-										: {}
-								}
+								style={{
+									marginLeft: drawerWidth,
+									width: `calc(100vw - ${drawerWidth}px)`,
+								}}
 							>
 								Sorting Algorithm Visualizer
 							</Typography>
