@@ -28,20 +28,27 @@ const Header = ({ setShowDrawer, showDrawer, showMenu }) => {
 						</IconButton>
 					</Hidden>
 					<Link to="/">
-						<Typography
-							variant="h6"
-							component="h2"
-							style={
-								!showMenu
-									? {
-											marginLeft: drawerWidth,
-											width: `calc(100vw - ${drawerWidth}px)`,
-									  }
-									: {}
-							}
-						>
-							Sorting Algorithm Visualizer
-						</Typography>
+						<Hidden mdUp>
+							<Typography variant="h6" component="h2">
+								Sorting Algorithm Visualizer
+							</Typography>
+						</Hidden>
+						<Hidden smDown>
+							<Typography
+								variant="h6"
+								component="h2"
+								style={
+									!showMenu
+										? {
+												marginLeft: drawerWidth,
+												width: `calc(100vw - ${drawerWidth}px)`,
+										  }
+										: {}
+								}
+							>
+								Sorting Algorithm Visualizer
+							</Typography>
+						</Hidden>
 					</Link>
 				</Toolbar>
 			</AppBar>
