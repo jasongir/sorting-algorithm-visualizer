@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { createRandomArray } from "../../utilities/utils";
 
+import SortControls from "../sort-controls/sort-controls.component";
+import SortTopSettings from "../sort-top-settings/sort-settings.component.jsx";
+
 import ShowBars from "../../components/show-bars/show-bars.component";
-import LabeledSlider from "../labeled-slider/labeled-slider.component";
 
 import "./sort.styles.css";
 
@@ -132,120 +134,39 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 	return (
 		<div className="sorting-container-div">
 			<h1>{sortName}</h1>
-			<div className="sort-top-settings">
-				<LabeledSlider
-					id="array-size"
-					label={`Array Size: ${numItems}`}
-					name="size"
-					min="5"
-					max="100"
-					value={numItems}
-					onChange={handleSliderChange(NUM_ITEMS)}
-				/>
-				<LabeledSlider
-					id="min-value"
-					label={`Min: ${min}`}
-					name="minimum"
-					min="0"
-					max="99"
-					value={min}
-					onChange={handleSliderChange(MINIMUM)}
-				/>
-
-				<LabeledSlider
-					id="max-value"
-					label={`Max: ${max}`}
-					name="maximum"
-					min="1"
-					max="100"
-					value={max}
-					onChange={handleSliderChange(MAXIMUM)}
-				/>
-				<LabeledSlider
-					id="delay-value"
-					label={`Base Delay: ${baseDelay}ms`}
-					name="delay"
-					min="30"
-					max="1000"
-					value={baseDelay}
-					onChange={handleSliderChange(DELAY_AMOUNT)}
-				/>
-
-				<div className="triple-top-buttons">
-					<button onClick={handlePlayPause}>
-						{isPlaying ? "Pause" : "SORT!"}
-					</button>
-					<button onClick={handleReset}>Reset</button>
-					<button onClick={createNewMoments}>Randomize</button>
-				</div>
-			</div>
+			<SortTopSettings
+				numItems={numItems}
+				handleNumItemsChange={handleSliderChange(NUM_ITEMS)}
+				minValue={min}
+				handleMinValueChange={handleSliderChange(MINIMUM)}
+				maxValue={max}
+				handleMaxValueChange={handleSliderChange(MAXIMUM)}
+				baseDelay={baseDelay}
+				handleBaseDelayChange={handleSliderChange(DELAY_AMOUNT)}
+				handlePlayPause={handlePlayPause}
+				isPlaying={isPlaying}
+				handleReset={handleReset}
+				createNewMoments={createNewMoments}
+			/>
 
 			<ShowBars
 				currentArray={arrayMoments[currentIdx].wholeArray}
 				highlightedBars={arrayMoments[currentIdx].highlighted}
 			/>
 
-			{/*
-         <SortControls 
-            handleSliderChange={handleSliderChange(BIG_SLIDER)}
-            sliderValue={currentIdx}
-            max={arrayMoments.length - 1}
+			<SortControls
+				handleSliderChange={handleSliderChange(BIG_SLIDER)}
+				sliderValue={currentIdx}
+				max={arrayMoments.length - 1}
+				handleBackwards={handleBackForward(BACKWARD)}
+				handleForwards={handleBackForward(FORWARD)}
+				handlePlayPause={handlePlayPause}
+				isPlaying={isPlaying}
+				speedValue={speed}
+				handleSpeedChange={handleSpeedChange}
+			/>
 
-            handleBackwards={handleBackForward(BACKWARD)}
-            handleForwards={handleBackForward(FORWARD)}
-            handlePlayPause={handlePlayPause}
-            isPlaying={isPlaying}
-            speedValue={speed}
-            handleSpeedChange={handleSpeedChange}
-
-         />
-         */}
-
-			<div className="sort-control-play">
-				<div className="index-slider-container">
-					<input
-						type="range"
-						name="index-slider"
-						id="idx-slider"
-						onChange={handleSliderChange(BIG_SLIDER)}
-						value={currentIdx}
-						min={0}
-						max={arrayMoments.length - 1}
-						step={1}
-					/>
-				</div>
-
-				<div className="play-controls">
-					<button onClick={handleBackForward(BACKWARD)}>Back</button>
-					<button onClick={handlePlayPause}>
-						{isPlaying ? "Pause" : "Play"}
-					</button>
-					<button onClick={handleBackForward(FORWARD)}>Forward</button>
-				</div>
-
-				<div>
-					<label htmlFor="speed-selection">
-						<select
-							name="select-speed"
-							id="speed-selection"
-							value={speed}
-							onChange={handleSpeedChange}
-						>
-							<option value={0.25}>0.25x</option>
-							<option value={0.5}>0.5x</option>
-							<option value={0.75}>0.75x</option>
-							<option default value={1}>
-								1x
-							</option>
-							<option value={1.25}>1.25x</option>
-							<option value={1.5}>1.5x</option>
-							<option value={1.75}>1.75x</option>
-						</select>
-					</label>
-				</div>
-			</div>
 			<p>There are {arrayMoments.length} "frames" in this sort.</p>
-
 			{sortDescription}
 		</div>
 	);

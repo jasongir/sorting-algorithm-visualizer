@@ -84,3 +84,7 @@ select {
 	text-decoration: none;
 	color: rgb(46, 46, 46);
 }
+
+:root {
+	--top-height: 70px;
+}
