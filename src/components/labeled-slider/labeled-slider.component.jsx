@@ -6,9 +6,8 @@ import Slider from "@material-ui/core/Slider";
 import "./labeled-slider.styles.css";
 
 const LabeledSlider = ({
-	id,
 	label,
-	name,
+	helperText,
 	min,
 	max,
 	value,
@@ -20,6 +19,11 @@ const LabeledSlider = ({
 			<Typography variant="body1" component="p">
 				{label}
 			</Typography>
+			{helperText && (
+				<Typography variant="caption" component="p">
+					{helperText}
+				</Typography>
+			)}
 			<Slider
 				aria-labelledby={label}
 				valueLabelDisplay="auto"

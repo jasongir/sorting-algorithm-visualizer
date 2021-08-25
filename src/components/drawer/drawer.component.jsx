@@ -14,54 +14,56 @@ import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 
 import "./drawer.styles.css";
+import DrawerItem from "../drawer-item/drawer-item.component";
 
 export const drawerWidth = 230;
 
 const SideDrawer = ({ showDrawer, setShowDrawer }) => {
+	const handleDrawerToggle = () => setShowDrawer(!showDrawer);
+
 	const drawer = (
 		<div className="side-drawer" style={{ width: drawerWidth }}>
 			<List>
-				<Link to="/">
-					<ListItem button>
-						<Typography variant="h5">
-							<IconButton>
-								<HomeIcon />
-							</IconButton>
-							HOME
-						</Typography>
-					</ListItem>
-				</Link>
+				<DrawerItem
+					to="/"
+					onClick={() => setShowDrawer(false)}
+					icon={<HomeIcon />}
+					text={"HOME"}
+				/>
 				<Divider />
-				<Link to="/selection">
-					<ListItem button>
-						<Typography variant="h6">Selection Sort</Typography>
-					</ListItem>
-				</Link>
-				<Link to="/insertion">
-					<ListItem button>
-						<Typography variant="h6">Insertion Sort</Typography>
-					</ListItem>
-				</Link>
-				<Link to="/shell">
-					<ListItem button>
-						<Typography variant="h6">Shell Sort</Typography>
-					</ListItem>
-				</Link>
-				<Link to="/merge">
-					<ListItem button>
-						<Typography variant="h6">Merge Sort</Typography>
-					</ListItem>
-				</Link>
-				<ListItem button>
-					<Typography variant="h6">
-						<Link to="/quick">Quick Sort</Link>
-					</Typography>
-				</ListItem>
+				<DrawerItem
+					to="/bubble"
+					onClick={() => setShowDrawer(false)}
+					text={"Bubble Sort"}
+				/>
+				<DrawerItem
+					to="/selection"
+					onClick={() => setShowDrawer(false)}
+					text={"Selection Sort"}
+				/>
+				<DrawerItem
+					to="/insertion"
+					onClick={() => setShowDrawer(false)}
+					text={"Insertion Sort"}
+				/>
+				<DrawerItem
+					to="/shell"
+					onClick={() => setShowDrawer(false)}
+					text={"Shell Sort"}
+				/>
+				<DrawerItem
+					to="/merge"
+					onClick={() => setShowDrawer(false)}
+					text={"Merge Sort"}
+				/>
+				<DrawerItem
+					to="/quick"
+					onClick={() => setShowDrawer(false)}
+					text={"Quick Sort"}
+				/>
 			</List>
 		</div>
 	);
-
-	const handleDrawerToggle = () => setShowDrawer(!showDrawer);
 
 	return (
 		<nav>
