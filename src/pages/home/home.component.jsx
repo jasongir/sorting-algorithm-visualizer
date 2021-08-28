@@ -47,10 +47,10 @@ const Home = () => {
 				<Typography variant="h4" component="h1">
 					The Sorting Algorithm Visualizer!
 				</Typography>
-				<Typography variant="body2" component="p">
-					I promise this page is under construction... try exploring other pages
-					using the top-left menu :)
-				</Typography>
+				{/*<Typography variant="body2" component="p">
+               I promise this page is under construction... try exploring other pages
+               using the top-left menu :)
+            </Typography> */}
 				<Grid
 					container
 					spacing={4}
