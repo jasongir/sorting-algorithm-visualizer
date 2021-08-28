@@ -36,7 +36,7 @@ const SortTopButtons = ({
 				</Typography>
 			</Grid>
 		</>
-	);
+	); ///
 };
 
 export default SortTopButtons;

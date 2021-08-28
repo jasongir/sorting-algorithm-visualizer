@@ -27,6 +27,8 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 
 	// state for which type of data source we are using
 	const [tabIndex, setTabIndex] = useState(0);
+	// ALSO: THIS WILL DECIDE WHICH DATA SOURCE TO GET FROM:
+	// 0 MEANS IT IS RANDOMIZED, 1 MEANS IMPORTED DATA
 
 	// state for creating the original array
 	const [numItems, setNumItems] = useState(10);
@@ -61,27 +63,27 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 					setMin(newVal);
 					setCurrentIdx(0);
 					setIsPlaying(false);
-					return;
 				}
+				break;
 			case MAXIMUM:
 				if (newVal > min) {
 					setMax(newVal);
 					setCurrentIdx(0);
 					setIsPlaying(false);
-					return;
 				}
+				break;
 			case NUM_ITEMS:
 				setNumItems(newVal);
 				setCurrentIdx(0);
 				setIsPlaying(false);
-				return;
+				break;
 			case BIG_SLIDER:
 				setIsPlaying(false);
 				setCurrentIdx(newVal);
-				return;
+				break;
 			case DELAY_AMOUNT:
 				setBaseDelay(newVal);
-				return;
+				break;
 			default:
 				console.log("not a slider type ._.");
 		}
@@ -121,51 +123,50 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 		setArrayMoments([...sortingAlgorithm(firstArr)]);
 	};
 
-	const validateHandler = () => {
-		const separated = userData.split(",");
-		console.log(separated);
-		if (separated.length < 5) {
-			setErrorMessage("Not enough numbers.");
-			return;
-		}
-		const separateNums = separated.map((num) => {
-			return num.replace(/\D/g, ""); // regex that replaces non-numbers with ""
-		});
+	const createData = (string) => {
+		const separated = string.split(",");
+		const separateNums = separated.map((num) => num.replace(/\D/g, ""));
+		const actualNums = [];
+		separateNums.forEach((num) =>
+			num.length > 0 ? actualNums.push(Number(num)) : null
+		);
 		const finalNums = [];
-		separateNums.forEach((num) => {
-			if (num.length > 0) finalNums.push(Number(num));
-		});
+		actualNums.forEach((num) =>
+			Number(num) >= 0 && Number(num) <= 100
+				? finalNums.push(Math.floor(Number(num)))
+				: null
+		);
+
+		return finalNums;
+	};
+
+	const validateHandler = () => {
+		const finalNums = createData(userData);
 		// now the array will be of numbers
 		// if the array is too short, have empty array with no highlights
 		if (finalNums.length < 5) {
-			// setArrayMoments([{ wholeArray: [0, 0, 0, 0, 0], highlighted: [] }]);
-			// setShownData(
-			//    `Need 5 valid number elements. Current array: ${
-			//       finalNums.length === 0 ? "[]" : finalNums.join()
-			//    }`
-			//    );
+			setErrorMessage("Not enough numbers.");
 			return;
 		}
 		// otherwise if array long enough, create new array moments
 		// and display the correct array
+		setErrorMessage("");
 		setIsPlaying(false);
 		setArrayMoments([...sortingAlgorithm(finalNums)]);
-		setShownData(finalNums.join());
+		setShownData(finalNums.join(", "));
 		setNumItems(finalNums.length);
 	};
 
 	// Use effects: make sure to create all the moments + start interval when time is right
 	useEffect(() => {
-		createNewMoments();
+		if (tabIndex === 0) {
+			createNewMoments();
+		}
 	}, [min, max, numItems]);
 	useEffect(() => {
-		setShownData(arrayMoments[0].wholeArray.join());
+		setShownData(arrayMoments[0].wholeArray.join(", "));
 		setUserData(arrayMoments[0].wholeArray.join());
 	}, [arrayMoments]);
-
-	useEffect(() => {
-		console.log(`Array size: ${arrayMoments[0].length}, index: ${currentIdx}`);
-	}, [currentIdx]);
 
 	useEffect(() => {
 		let interval;
@@ -278,3 +279,7 @@ const Sort = ({ sortingAlgorithm, sortName, sortDescription }) => {
 };
 
 export default Sort;
+
+// useEffect(() => {
+// 	console.log(`Array size: ${arrayMoments[0].length}, index: ${currentIdx}`);
+// }, [currentIdx]);

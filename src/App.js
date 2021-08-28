@@ -54,7 +54,6 @@ import { Route, Switch } from "react-router-dom";
 function App() {
 	const [showDrawer, setShowDrawer] = useState(false);
 	// showing menu button exclusively depends on size of screen
-	const [showMenu, setShowMenu] = useState(true);
 
 	const switchJSX = (
 		<Switch>
@@ -71,17 +70,9 @@ function App() {
 	return (
 		<div className="App">
 			<div className="side-drawer-container">
-				<SideDrawer
-					showMenu={showMenu}
-					showDrawer={showDrawer}
-					setShowDrawer={setShowDrawer}
-				/>
+				<SideDrawer showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
 			</div>
-			<Header
-				showMenuIcon={showMenu}
-				setShowDrawer={setShowDrawer}
-				showDrawer={showDrawer}
-			/>
+			<Header setShowDrawer={setShowDrawer} showDrawer={showDrawer} />
 			<Hidden smDown>
 				<div
 					className="application"
@@ -101,19 +92,3 @@ function App() {
 }
 
 export default App;
-
-// useEffect(() => {
-// 	const largeScreen = 700;
-// 	const screenIsLarge = () => window.innerWidth > largeScreen;
-// 	const screenIsSmall = () => window.innerWidth <= largeScreen;
-// 	const changeShowDrawer = () => setShowDrawer(screenIsLarge);
-// 	const changeShowMenu = () => setShowMenu(screenIsSmall);
-
-// 	window.addEventListener("resize", changeShowDrawer);
-// 	window.addEventListener("resize", changeShowMenu);
-
-// 	return () => {
-// 		window.removeEventListener("resize", changeShowDrawer);
-// 		window.removeEventListener("resize", changeShowMenu);
-// 	};
-// });

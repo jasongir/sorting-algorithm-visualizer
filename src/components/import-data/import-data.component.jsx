@@ -17,7 +17,7 @@ const ImportData = ({ data, setData, validateHandler, errorMessage }) => {
 			<Box component="div" style={{ paddingBottom: 8 }}>
 				<Typography variant="body1">
 					Input your own comma separated integers ranging from 0 to 100: (must
-					include 5 numbers)
+					include at least 5 numbers)
 				</Typography>
 			</Box>
 			<TextField

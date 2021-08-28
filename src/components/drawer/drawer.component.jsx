@@ -5,13 +5,8 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 
-import ListItem from "@material-ui/core/ListItem";
-import Typography from "@material-ui/core/Typography";
 import "@fontsource/roboto";
 import HomeIcon from "@material-ui/icons/Home";
-import IconButton from "@material-ui/core/IconButton";
-
-import { Link } from "react-router-dom";
 
 import "./drawer.styles.css";
 import DrawerItem from "../drawer-item/drawer-item.component";

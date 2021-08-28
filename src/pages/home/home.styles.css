@@ -4,3 +4,6 @@
 .home-inner-container {
 	padding: 10px;
 }
+.home-inner-container > h1 {
+	padding-bottom: 10px;
+}

@@ -3,6 +3,12 @@ let moments = [];
 export const quickSort = (array) => {
 	moments = [];
 	moments.push({ wholeArray: [...array], highlighted: [] });
+	const n = array.length;
+	array.forEach((_, idx) => {
+		const newIdx = Math.floor(Math.random() * n);
+		[array[idx], array[newIdx]] = [array[newIdx], array[idx]];
+		moments.push({ wholeArray: [...array], highlighted: [idx, newIdx] });
+	});
 	sort(array, 0, array.length - 1);
 	moments.push({ wholeArray: [...array], highlighted: [] });
 	return moments;
